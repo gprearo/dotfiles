@@ -28,3 +28,7 @@ set ai "Auto indent
 set si "Smart indent
 
 set nu
+
+""""""""""""""""""""""""""""""
+
+set noswapfile
