@@ -33,4 +33,5 @@ set nu
 
 set noswapfile
 
+"Tema padrão do vim
 colorscheme elflord
