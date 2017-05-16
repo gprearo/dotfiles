@@ -32,3 +32,5 @@ set nu
 """"""""""""""""""""""""""""""
 
 set noswapfile
+
+colorscheme elflord
