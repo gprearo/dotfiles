@@ -1,7 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-"VUNDLE --------------------------------------------------------------
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,41 +9,15 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"END VUNDLE ------------------------------------------------------
+
 
 " Disable Arrow keys in Escape mode
 map <up> :echoerr "Stop being stupid"<CR> 
@@ -75,12 +48,11 @@ set tabstop=4
 set ai "Auto indent
 set si "Smart indent
 
-set nu
+"Enable hybrid line number (relative and absolute)
+set number
+set relativenumber
 
 """"""""""""""""""""""""""""""
-
-" Disable .swap
-set noswapfile
 
 
 filetype plugin on
@@ -89,11 +61,25 @@ syntax on
 "Write on su files
 cmap w!! w !sudo tee %
 
-" Allow local .vimrc config
-set exrc
-set secure
+"Load power line fonts for airline status bar
+let g:airline_theme='bubblegum'
+let g:airline_powerline_fonts = 1
 
-" Set ycm_extra_conf path
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py'
-" Enable location list
-let g:ycm_always_populate_location_list = 1
+"Set the position on spliting windows
+set splitbelow
+set splitright
+
+"Set the swapfile directory
+set directory=$HOME/.vim/swapfiles//
+
+
+"Disble relative numbers when leaving buffer or losing focus
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained * set relativenumber
+	autocmd BufLeave,FocusLost * set norelativenumber
+augroup END
+
+"Remove trailig from statusbar
+let g:airline_detect_whitespace=0
+let g:airline#extensions#whitespace#enabled=0
