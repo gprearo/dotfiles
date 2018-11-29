@@ -86,3 +86,10 @@ source $ZSH/oh-my-zsh.sh
 export TERM='xterm-256color'
 
 setxkbmap -model abnt2 -layout br -variant abnt2
+
+
+# Spark setup
+export SPARK_HOME=/usr/share/spark
+export PATH=$PATH:$SPARK_HOME/bin
+export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:$PYTHONPATH
+export PATH=$PATH:$SPARK_HOME/python
