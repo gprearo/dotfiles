@@ -85,11 +85,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export TERM='xterm-256color'
 
-setxkbmap -model abnt2 -layout br -variant abnt2
+export NODE_PATH="$HOME/.node/bin"
+export PATH="$NODE_PATH:$HOME/.cargo/bin:$PATH"
 
 
-# Spark setup
-export SPARK_HOME=/usr/share/spark
-export PATH=$PATH:$SPARK_HOME/bin
-export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:$PYTHONPATH
-export PATH=$PATH:$SPARK_HOME/python
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
